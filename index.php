@@ -49,7 +49,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         if($this->fields->previewContent)
                             $this->fields->previewContent();
                         else
-                            $this->excerpt(150, '...');//footer中的js会将其改为最多100个字符
+                            $this->excerpt(200, '');//footer中的js会将其改为最多100个字符
                     ?>
                 </div>
             </article>
