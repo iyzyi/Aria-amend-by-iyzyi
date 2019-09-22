@@ -184,7 +184,22 @@ class Utils
             $n = mt_rand(0, count($urls) - 1);
             return $urls[$n];
         } else {
-            return $options->themeUrl . '/assets/img/thumbnail.jpg';
+            /*iyzyi补充*/
+            $dir = str_replace('/lib/Utils.php', '/assets/img/article-thumbnail/', __FILE__);//物理路径
+            if (is_dir($dir)){
+                if ($str = opendir($dir)){//这一步坑死我了
+                    while( ($filename = readdir($str)) !== false ) {
+                        if($filename != "." && $filename != ".."){
+                            if (preg_match("/.*\.(jpg|png|jpeg|gif|bmp)$/i", $filename)){//i忽略大小写
+                                $file_array[]=$filename;
+                            }
+                        }
+                    } 
+                }
+            }
+            closedir($str);
+            $n = mt_rand(0, count($file_array) - 1);
+            return $options->themeUrl . '/assets/img/article-thumbnail/' . $file_array[$n];
         }
     }
 
