@@ -21,6 +21,12 @@
                 </div>
                 <div class="card-meta-top">
                     <span class="card-meta-cate"><i class="iconfont icon-aria-category"></i> <?php $this->category(' ',true,'无'); ?></span><span class="card-meta-date"><i class="iconfont icon-aria-date"></i> <?php $this->date(); ?></span>
+                    <li class="card-meta-label card-meta-views card-meta-right">
+                        <i class="iconfont icon-aria-view"></i> <?php Contents::getPostView($this); ?>
+                    </li>
+                    <li class="card-meta-label card-meta-comments card-meta-right">
+                        <i class="iconfont icon-aria-comment"></i> <?php $this->commentsNum('%d'); ?>
+                    </li>
                 </div>
                 <a href="<?php $this->permalink(); ?>">
                     <div class="card-thumbnail" >
@@ -39,18 +45,6 @@
                             $this->excerpt(400,'');//取前400个字节。footer中的js会将其改为最多200个字节
                     ?>
                 </div>
-                <ul class="card-meta-bottom">
-                    <li class="card-meta-label card-meta-more">
-                        <a href="<?php $this->permalink(); ?>" target="_blank"><i class="iconfont icon-aria-more"></i><i class="iconfont icon-aria-more"></i></a>
-                    </li>
-                    <li class="card-meta-label card-meta-views card-meta-right">
-                        <i class="iconfont icon-aria-view"></i> <?php Contents::getPostView($this); ?>
-                    </li>
-                    <li class="card-meta-label card-meta-comments card-meta-right">
-                        <i class="iconfont icon-aria-comment"></i> <?php $this->commentsNum('%d'); ?>
-                    </li>
-                    <!--li class="card-meta-label card-meta-likes"></li-->
-                </ul>
             </article>
     <?php endwhile; ?>
 
