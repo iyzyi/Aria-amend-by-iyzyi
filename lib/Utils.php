@@ -185,7 +185,7 @@ class Utils
             return $urls[$n];
         } else {
             /*iyzyi补充*/
-            $dir = str_replace('/lib/Utils.php', '/assets/img/article-thumbnail/', __FILE__);//物理路径
+            $dir = preg_replace('/lib(\/|\\\\)Utils.php/i', 'assets/img/article-thumbnail/', __FILE__);//物理路径
             if (is_dir($dir)){
                 if ($str = opendir($dir)){//这一步坑死我了
                     while( ($filename = readdir($str)) !== false ) {
@@ -194,12 +194,12 @@ class Utils
                                 $file_array[]=$filename;
                             }
                         }
-                    } 
+                    }
+                    closedir($str);
+                    $n = mt_rand(0, count($file_array) - 1);
+                    return $options->themeUrl . '/assets/img/article-thumbnail/' . $file_array[$n];
                 }
             }
-            closedir($str);
-            $n = mt_rand(0, count($file_array) - 1);
-            return $options->themeUrl . '/assets/img/article-thumbnail/' . $file_array[$n];
         }
     }
 
