@@ -33,3 +33,4 @@ Fork自 [Siphils/Typecho-Theme-Aria](https://github.com/Siphils/Typecho-Theme-Ar
 190929
 
 * 修复页面中的短代码盒子（link-box）中的图片同样会弹出缩放的问题
+
